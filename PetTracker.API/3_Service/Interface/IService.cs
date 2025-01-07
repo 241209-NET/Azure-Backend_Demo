@@ -5,10 +5,14 @@ namespace PetTracker.API.Service;
 
 public interface IPetService
 {
-    Task<Pet> CreateNewPet(Pet newPet);
+    Task<Pet> CreateNewPet(NewPetDTO newPet);
+
     IEnumerable<PetOutDTO> GetAllPets();
     Pet? GetPetById(int id);
     IEnumerable<Pet> GetPetByName(string name);
+
+    UpdatePetDTO? UpdatePet(UpdatePetDTO updatePet);
+
     Pet? DeletePetById(int id);
 }
 

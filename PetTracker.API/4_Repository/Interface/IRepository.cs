@@ -5,11 +5,20 @@ namespace PetTracker.API.Repository;
 public interface IPetRepository
 {
     //CRUD
+
+    //Create
     Task<Pet> CreateNewPet(Pet newPet); 
+
+    //Read
     IEnumerable<Pet> GetAllPets(); 
     Pet? GetPetById(int id); 
     IEnumerable<Pet> GetPetByName(string name);
-    void DeletePetById(int id);    
+
+    //Update
+    Pet UpdatePet(Pet updatePet);
+
+    //Delete
+    Pet DeletePetById(int id);    
 }
 
 public interface IOwnerRepository

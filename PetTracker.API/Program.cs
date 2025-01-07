@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Add dbcontext and connect it to connection string
 builder.Services.AddDbContext<PetContext>(options => 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PetsDB")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PetsDB_Azure")));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

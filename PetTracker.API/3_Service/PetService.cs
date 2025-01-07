@@ -34,15 +34,37 @@ public class PetService : IPetService
 
     }
 
-    public async Task<Pet> CreateNewPet(Pet newPet)
+    public async Task<Pet> CreateNewPet(NewPetDTO newPet)
     {
-        return await _petRepository.CreateNewPet(newPet);
+        Pet pet = _mapper.Map<Pet>(newPet);
+        return await _petRepository.CreateNewPet(pet);
     }
 
     public Pet? GetPetById(int id)
     {
         if(id < 1) return null;
         return _petRepository.GetPetById(id);
+    }    
+
+    public IEnumerable<Pet> GetPetByName(string name)
+    {
+        if(String.IsNullOrEmpty(name)) return [];
+        
+        var petList = _petRepository.GetPetByName(name);
+        return petList;
+    }
+
+    public UpdatePetDTO? UpdatePet(UpdatePetDTO updatePet)
+    {
+        var pet = GetPetById(updatePet.Id);
+
+        if(pet is null) return null;
+
+        Pet updatedPet = _petRepository.UpdatePet(pet);
+
+        UpdatePetDTO outPet = _mapper.Map<UpdatePetDTO>(updatedPet);
+
+        return outPet;
     }
 
     public Pet? DeletePetById(int id)
@@ -51,14 +73,6 @@ public class PetService : IPetService
         if(pet is not null) _petRepository.DeletePetById(id);
         return pet;
 
-    }
-
-    public IEnumerable<Pet> GetPetByName(string name)
-    {
-        if(String.IsNullOrEmpty(name)) return [];
-        
-        var petList = _petRepository.GetPetByName(name);
-        return petList;
     }
 
 }

@@ -7,9 +7,9 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<Pet, PetOutDTO>()
-            .ForMember(s => s.OwnersDTO, c => c.MapFrom(m => m.Owners));
-
+        CreateMap<Pet, PetOutDTO>().ReverseMap();
         CreateMap<Owner, OwnerInDTO>().ReverseMap();
+        CreateMap<Pet, NewPetDTO>().ReverseMap();
+        CreateMap<Pet, UpdatePetDTO>().ReverseMap();
     }
 }

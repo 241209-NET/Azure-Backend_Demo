@@ -7,7 +7,6 @@ namespace PetTracker.API.Model;
 public class Pet
 {
     public int Id { get; set; }
-    [MaxLength(5)]
     [DeniedValues("foo","bar","gee")]
     public string Name { get; set; } = "";
     [Required]
