@@ -34,7 +34,7 @@ namespace PetTracker.API.Migrations
 
                     b.HasIndex("PetsId");
 
-                    b.ToTable("OwnerPet");
+                    b.ToTable("OwnerPet", (string)null);
                 });
 
             modelBuilder.Entity("PetTracker.API.Model.Owner", b =>
@@ -54,7 +54,7 @@ namespace PetTracker.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Owners");
+                    b.ToTable("Owners", (string)null);
                 });
 
             modelBuilder.Entity("PetTracker.API.Model.Pet", b =>
@@ -78,7 +78,7 @@ namespace PetTracker.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pets");
+                    b.ToTable("Pets", (string)null);
                 });
 
             modelBuilder.Entity("OwnerPet", b =>
