@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetTracker.API", "PetTracker.API\PetTracker.API.csproj", "{F9790D02-0F9B-4391-A10C-6B4062CACAA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetTracker.API", "PetTracker.API\PetTracker.API.csproj", "{3F1A3E78-F9F1-4AE0-98F6-C3D1DFA67710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetTracker.TEST", "PetTracker.TEST\PetTracker.TEST.csproj", "{8AC09AEB-50AD-4103-8E13-315D0F9DFD2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetTracker.TEST", "PetTracker.TEST\PetTracker.TEST.csproj", "{CA2592A3-F94C-415B-BA08-A768ED5EB499}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +16,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F9790D02-0F9B-4391-A10C-6B4062CACAA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9790D02-0F9B-4391-A10C-6B4062CACAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9790D02-0F9B-4391-A10C-6B4062CACAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9790D02-0F9B-4391-A10C-6B4062CACAA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AC09AEB-50AD-4103-8E13-315D0F9DFD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AC09AEB-50AD-4103-8E13-315D0F9DFD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AC09AEB-50AD-4103-8E13-315D0F9DFD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AC09AEB-50AD-4103-8E13-315D0F9DFD2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F1A3E78-F9F1-4AE0-98F6-C3D1DFA67710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1A3E78-F9F1-4AE0-98F6-C3D1DFA67710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1A3E78-F9F1-4AE0-98F6-C3D1DFA67710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1A3E78-F9F1-4AE0-98F6-C3D1DFA67710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA2592A3-F94C-415B-BA08-A768ED5EB499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA2592A3-F94C-415B-BA08-A768ED5EB499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA2592A3-F94C-415B-BA08-A768ED5EB499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA2592A3-F94C-415B-BA08-A768ED5EB499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
