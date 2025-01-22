@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using PetTracker.API.Data;
 using PetTracker.API.Model;
 using PetTracker.API.Repository;
@@ -13,7 +17,34 @@ builder.Services.AddDbContext<PetContext>(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition(name: "Bearer", securityScheme: new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Name = "Bearer",
+                In = ParameterLocation.Header,
+                Reference = new OpenApiReference
+                {
+                    Id = "Bearer",
+                    Type = ReferenceType.SecurityScheme
+                }
+            },
+            new List<string>()
+        }
+    });
+
+});
 
 //Dependency Inject the proper services
 builder.Services.AddScoped<IPetService, PetService>();
@@ -33,6 +64,16 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
 
+builder.Services.AddAuthorization()
+    .AddOptions<BearerTokenOptions>(IdentityConstants.BearerScheme).Configure(options =>
+    {
+        //options.BearerTokenExpiration = TimeSpan.FromSeconds(30);
+        //options.RefreshTokenExpiration = TimeSpan.FromSeconds(10);
+    });
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+    .AddEntityFrameworkStores<PetContext>();
+
 var app = builder.Build();
 
 //Code to auto migrate
@@ -48,4 +89,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.MapIdentityApi<IdentityUser>();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
