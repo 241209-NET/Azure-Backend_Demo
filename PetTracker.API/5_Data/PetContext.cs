@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PetTracker.API.Model;
 
 namespace PetTracker.API.Data;
 
-public partial class PetContext : DbContext
+public partial class PetContext : IdentityDbContext
 {
     public PetContext(){}
     public PetContext(DbContextOptions<PetContext> options) : base(options){}

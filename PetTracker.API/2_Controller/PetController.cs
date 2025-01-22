@@ -24,7 +24,7 @@ public class PetController : ControllerBase
         return Ok(await pet);
     }
 
-    [HttpGet]
+    [HttpGet, Authorize]
     public IActionResult GetAllPets()
     {
         var petList = _petService.GetAllPets();    

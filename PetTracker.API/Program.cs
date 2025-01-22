@@ -35,8 +35,9 @@ builder.Services.AddControllers()
 
 var app = builder.Build();
 
-var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<PetContext>();
-db.Database.Migrate();
+//Code to auto migrate
+// var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<PetContext>();
+// db.Database.Migrate();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
