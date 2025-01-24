@@ -71,7 +71,17 @@ builder.Services.AddAuthorization()
         //options.RefreshTokenExpiration = TimeSpan.FromSeconds(10);
     });
 
-builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+bool securePass = false;
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 1;
+    options.Password.RequireDigit = securePass;
+    options.Password.RequireLowercase = securePass;
+    options.Password.RequireUppercase = securePass;
+    options.Password.RequireNonAlphanumeric = securePass;
+})
     .AddEntityFrameworkStores<PetContext>();
 
 var app = builder.Build();
@@ -80,7 +90,6 @@ var app = builder.Build();
 // var db = app.Services.CreateScope().ServiceProvider.GetRequiredService<PetContext>();
 // db.Database.Migrate();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
